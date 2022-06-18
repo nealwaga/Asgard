@@ -78,3 +78,11 @@ class Profile(models.Model):
 
 
 
+class Join(models.Model):
+	user_id = models.OneToOneField(User, on_delete=models.CASCADE)
+	hood_id = models.ForeignKey(Hood, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.user_id
+
+
