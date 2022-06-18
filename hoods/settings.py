@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'cloudinary',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'tinymce',
 ]
 
 #Cloudinary Classes
