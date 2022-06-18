@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     #own
     'mtaa',
     'bootstrap4',
+    'bootstrap3',
     'cloudinary',
     'rest_framework',
     'rest_framework.authtoken'
