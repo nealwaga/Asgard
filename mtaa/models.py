@@ -86,3 +86,17 @@ class Join(models.Model):
 		return self.user_id
 
 
+class Posts(models.Model):
+	title = models.CharField(max_length = 300)
+	content = models.TextField()
+	posted_by = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+	hood = models.ForeignKey(Hood, on_delete=models.CASCADE)
+
+	def save_posts(self):
+		self.save()
+
+	def delete_posts(self):
+		self.delete()
+
+	def __str__(self):
+		return self.title
