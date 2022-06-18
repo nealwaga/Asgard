@@ -1,0 +1,100 @@
+{%extends 'base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<br>
+<br>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<div class="container top">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-5">
+          {% if profile.profile_photo %}
+          <img src="{{profile.profile_photo.url}}" alt="profile-photo" class="img-fluid-circle" style="border-radius: 50%;height:200px;width: 200px;">
+          {% endif %}
+        </div>
+        <div class="col-md-5 text-left">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <span class="username">{{ profile.user }}</span>
+            </li>
+            {% if profile.user == user %}
+            <!-- <li class="list-inline-item">
+              <a class="btn btn-edit" href="">Edit Profile</a>
+            </li> -->
+            <li class="list-inline-item">
+              <a data-toggle="modal" data-target="#edit" href=""><i class="far fa-edit"></i>Edit Profile</a>
+            </li>
+            {% else %}
+            <li class="list-inline-item">
+              <a href="#" class="btn btn-primary"></a>
+            </li>
+            {% endif %}
+          </ul>
+
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{hoods|length}}</span> Hoods
+            </li>
+            <li class="list-inline-item">
+              <span class="font-weight-bold">{{business|length}}</span> Business
+            </li>
+          </ul>
+          <p class="font3">{{profile.bio}}</p>
+          {% if profile.user == user %}
+          <p><a href="{% url 'create_hood' %}">Create Hood</a></p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="container">
+    <div class="row">
+
+      {% for hood in hoods %}
+      <div class="col-md-4">
+        <h4>Hoods</h4>
+        <img src="{{hood.hood_photo.url}}" alt="Image" style="height:300px;width:300px;">
+        <p>{{hood.hood_name}}</p>
+        <a href="{% url 'update_hood' hood.id %}" class="btn btn-sm btn-danger">Update Your Hood</a>
+        <a href="{% url 'delete_hood' hood.id %}" class="btn btn-sm btn-danger">Delete</a>
+        <hr>
+      </div>
+      {% empty %}
+      <div>
+        <h2>Profile has no hoods</h2>
+      </div>
+      {% endfor %}
+      <div class="col-4">
+        <h4>Business</h4>
+  {% for biz in business %}
+  <img src="{{biz.b_photo.url}}" alt="Image" style="height:300px;width:300px;">
+  <p>{{biz.b_name}}</p>
+  {% empty %}
+  <div>
+    <h2>Profile has no business</h2>
+  </div>
+  {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <ul class="list-group">
+          <li class="list-group-item text-center"><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
+          <li class="list-group-item text-center"><a href="/logout/">Log Out</a></li>
+          <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

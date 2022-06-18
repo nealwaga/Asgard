@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<title>New Post</title>
+{{form.media}}
+
+<div class="row container" style="padding-bottom:20px">
+
+  <div class="col-md-3" style="padding-top: 0px">
+
+
+  </div>
+  <div class="col-md-7">
+    <div class="card card-default">
+      <div class="card-heading">
+        <h3 class="">Edit Post</h3>
+      </div>
+      <div class="card-body">
+        <form action="{% url 'create_post' %}" method="post">
+
+          {%csrf_token%}
+          {% bootstrap_form form %}
+          <button type="submit" class="btn btn-success btn-block btn-sm">Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>
+
+</div>
+{% block scripts %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% bootstrap_javascript %}
+{% endblock %}
+{% endblock %}

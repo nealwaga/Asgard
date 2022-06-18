@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+{%block content%}
+<br>
+<br>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<div class="c" style="padding-top: 24px">
+					{% include 'message/message.html' %}
+			</div>
+<div class="container">
+	<h4>Welcome to Maisha Mtaani. Begin by joining a hood. If your hood doesn't exist, create one <a href="{% url 'create_hood' %}">here</a></h4>
+
+	<form class="" action="{% url 'search' %}">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Search Your Hood By ID" name="search">
+
+		</div>
+
+		<button type="submit" class="btn btn-default">Submit</button>
+
+	</form>
+
+	<div class="row" style="padding-top: 20px">
+		<div class="card-columns">
+			{%for hood in neighbourhoods%}
+			<div class="card mr-0" style="max-width:30rem;margin-top:5px;">
+
+				<img src="{{hood.hood_photo.url}}" class="card-img-top">
+				<div class="card-body">
+
+					<div class="media">
+						<div class="media-left media-top">
+							<p>Hood: {{hood.hood_name}}</p>
+							<p>Location: {{hood.location}}</p>
+						</div>
+					</div>
+					<hr>
+					<p>Occupants: {{hood.user.join.hood_id.id}}</p>
+
+						<a class="btn btn-sm btn-success" href="{% url 'join' hood.id %}">Join</a>
+				</div>
+
+			</div>
+			{%endfor%}
+		</div>
+	</div>
+
+
+	{%endblock%}

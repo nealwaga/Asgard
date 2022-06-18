@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{% block content%}
+<br>
+<br>
+
+<div class="container">
+<div class="col-md-1"></div>
+<div class="col-md-8">
+  <div class="card card-default">
+    <div class="card-heading">
+      <h3>Search results for a hood by ID: <strong>{{message}}</strong></h3>
+    </div>
+  </div>
+  <br><br>
+  {%if hoods%}
+
+  <div class="row">
+    {% for hood in hoods %}
+    <div class="col-md-8">
+      <div class="card mr-0" style="max-width:30rem;margin-top:5px;">
+
+				<img src="{{hood.hood_photo.url}}" class="card-img-top">
+      </div>
+        <div class="card-heading">
+          {{hood.name.capitalize}}
+        </div>
+        <div class="card-body">
+          <p>Location: {{hood.location}}</p>
+          <a href="{% url 'join' hood.id %}" class="btn btn-sm btn-success">Join</a>
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+  </div>
+  {%else%}
+  <div class="card-body">
+    <h4 class="text-center">No neighbourhood with the name <strong>{{message}}</strong> exists! You can however create it <a href="{% url 'create_hood' %}">here</a></h4>
+  </div>
+  {%endif%}
+
+
+<div class="col-md-1"></div>
+
+
+</div>
+
+{%endblock%}

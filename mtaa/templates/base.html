@@ -1,0 +1,38 @@
+{% load bootstrap4 %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  {% if title %}
+  <title>Maisha Mtaani - {{title}}</title>
+  {% else %}
+  <title> Maisha Mtaani </title>
+  {% endif %}
+
+  <link rel="icon" type="image/png" sizes="196x196" href="/static/img/favicon-192.png">
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  {% block styles %}
+  {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'css/hood.css' %}">
+  {% endblock %}
+
+</head>
+
+<body>
+  {% include "navbar.html" %}
+  {% block content %}{%endblock%}
+
+  {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% static 'js/script.js' %}">
+
+  </script>
+  {% bootstrap_javascript %}
+  {% endblock %}
+</body>
+
+</html>
