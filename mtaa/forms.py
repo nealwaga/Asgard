@@ -14,3 +14,9 @@ class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user', 'business','email','u_hood']
+        
+        
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model = Business
+        exclude = ['user','hood']
