@@ -60,7 +60,7 @@ class Profile(models.Model):
         if created:
             Profile.objects.create(user=instance)
 
-        # post_save.connect(create_user_profile, sender=User)
+        post_save.connect(create_user_profile, sender=User)
 
     @receiver(post_save, sender=User)
     def update_user_profile(sender, instance, created, **kwargs):
