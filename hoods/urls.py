@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url, include
+from django.contrib.auth import views
+
+
+#Create urls here
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'^accounts/', include('registration.backends.simple.urls')),
+    path(r'^logout/$', views.logout, {"next_page": '/accounts/login/'}),
+    path(r'', include('mtaa.urls'))
 ]
