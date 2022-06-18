@@ -25,5 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path(r'^accounts/', include('registration.backends.simple.urls')),
     path(r'^logout/$', views.logout, {"next_page": '/accounts/login/'}),
-    path(r'', include('mtaa.urls'))
+    path(r'', include('mtaa.urls')),
+    path(r'^tinymce/', include('tinymce.urls')),
 ]
