@@ -1,0 +1,176 @@
+p,
+form,
+::placeholder,
+li {
+    font-family: 'Source Sans Pro';
+    font-size: smaller;
+    color: #45526C;
+    font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins';
+    font-weight: lighter;
+    color: #86340A;
+}
+
+.fas {
+    color: #86340A;
+}
+
+a {
+    color: #86340A;
+    text-decoration: none;
+}
+
+::selection {
+    color: #fff;
+    background-color: #86340A;
+}
+
+.prof-body {
+
+    width: 70%;
+    padding: 5%;
+    box-shadow: 0 7px 10px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-btn {
+    width: 258px;
+    margin: 0 auto;
+    border-radius: 0%;
+    background-color: #fff;
+    color: #86340A;
+    border: 3px solid #86340A;
+}
+
+.login-btn:hover {
+    border: 3px solid black;
+    color: black;
+    transition: 250ms;
+    background-color: #fff;
+}
+
+.prof-pic {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile {
+
+    font-size: 80px;
+
+}
+
+.my-pic {
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    box-shadow: 0 10px 13px 0 rgba(0, 0, 0, 0.2), 0 11px 25px 0 rgba(0, 0, 0, 0.19);
+}
+
+.welcome-section {
+    padding: 5%;
+}
+
+.hood-btn {
+    background-color: #86340A;
+    color: #fff;
+    font-family: 'Source Sans Pro';
+    font-size: smaller;
+    border: none;
+}
+
+.hood-btn:hover {
+    background-color: #fff;
+    color: #86340A;
+    border: 1px solid #86340A;
+    transition: 250ms;
+}
+
+.available-section {
+    margin-top: 10%;
+}
+
+.welcome-section {
+    height: 80vh;
+}
+
+.card {
+    width: 450px;
+    border: none;
+    box-shadow: 0 1px 1px 0 #45526C, 0 1px 1px 0 #45526C;
+}
+
+.hood-list {
+    padding: 10%;
+}
+
+.new-btn {
+    background-color: #fff;
+    color: #45526C;
+    border: 2px solid #45526C;
+    transition: 250ms;
+    font-family: 'Source Sans Pro';
+    font-size: smaller;
+    border-radius: 5%;
+    font-weight: 600;
+}
+
+.card {
+    width: 90%;
+}
+
+.place {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.card-img-top {
+    margin: 0 auto;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.prof-display {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#bg {
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    -webkit-animation: myfirst 5s;
+    /* Chrome, Safari, Opera */
+    animation: myfirst 5s;
+}
+
+/* Chrome, Safari, Opera */
+@keyframes myfirst {
+    from {
+        opacity: 0.0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
