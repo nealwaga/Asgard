@@ -25,6 +25,6 @@ from django.contrib.auth.views import LoginView, logout_then_login, LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('watch.urls')),
-    path('accounts/', include('registration.backends.simple.urls')),
+    # path('accounts/', include('registration.backends.simple.urls')),
     path('logout/', views.LogoutView.as_view(next_page='login'), name='logout'),
 ]
