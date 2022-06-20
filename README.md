@@ -32,8 +32,8 @@ Admin should:
 ### Cloning
 * In your terminal:
 
-    `$ git clone https://github.com/nealwaga/Asgard`
-    `$ cd Asgard`
+    >``$ git clone https://github.com/nealwaga/Asgard``
+    >``$ cd Asgard``
 ---
 ## Installations
 * The following command installs all the application requirements:
