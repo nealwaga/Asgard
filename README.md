@@ -1,14 +1,14 @@
 # Asgard
-***
+
 ## Built By [Neal Waga](https://github.com/nealwaga/)
-***
+
 ## Description
----
 This is a web application that allows users to sign-up or log-in then create their own profile in order create new neighbourhoods, join a neighbourhood, post something as well as add a business on a particular neighbourhood's page and search for a business in a particular neighbourhood.
 Users can communicate to other members in the hoods they join.
 
 **Users must log in with credible emails**
 ***
+
 ## User Stories
 These are the behaviors/features that the application implements for use by a user.
 Users would like to:
@@ -27,8 +27,8 @@ Admin should:
 * Add, Edit and Delete users, neighbourhoods, posts and businesses
 * Manage the application.
 ***
+
 ## SetUp / Installation Requirements
----
 ### Cloning
 * In your terminal:
 
@@ -36,7 +36,7 @@ Admin should:
     `$ cd Asgard`
 ---
 ## Installations
-The following command installs all the application requirements
+* The following command installs all the application requirements:
     >``pip freeze -r requirements.txt``
 ---
 ## Running the Application
@@ -52,8 +52,8 @@ After extracting the files,
 5. Running tests
 > ``python3 manage.py test.``
 ***
+
 ## Technologies Used
----
 * Python3
 * Django
 * Postgres
@@ -62,11 +62,14 @@ After extracting the files,
 * JavaScript
 * Bootstrap 3
 ***
+
 ## Known Bugs
 None.
 ***
+
 ## [License](https://github.com/nealwaga/Asgard/blob/master/LICENSE)
 > MIT License &copy; 2022 Neal Waga
 ***
+
 ## Collaborate
 For any collaborations, reach me on waganeal@gmail.com
