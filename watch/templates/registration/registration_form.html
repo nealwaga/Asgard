@@ -1,0 +1,30 @@
+{%extends "registration/base.html"%}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container-fluid register-page">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 registration-section">
+            {% if form.errors %}
+            <p> Some Information Might be Incorrect </p>
+            {% endif %}
+            <div class="panel panel-default register-body">
+
+                <div class="panel-heading">
+                    <h6 class="text-center">SIGN UP INTO THE NEIGHBOURHOOD</h6>
+                </div>
+                <div class="panel-body">
+
+                    <form action="/accounts/register/" method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-sm login-btn" value="SIGN UP">
+                        </div>
+                        <input type="hidden" name="next" value="{{next}}">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

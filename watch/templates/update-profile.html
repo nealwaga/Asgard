@@ -1,0 +1,28 @@
+{%extends 'registration/base.html'%}
+{% load bootstrap3 %}
+{% load static%}
+{% block content%}
+<div class="container profile-update">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="container text-center">
+                <h1>YOUR NEIGHBOURH<i class="fas fa-home"></i>D NEEDS YOU!</h1>
+                <p>But first, let us update your profile.</p>
+            </div>
+      </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="prof-body">
+                <form action="{% url 'update_profile'%}" method="post" enctype="multipart/form-data">
+
+                    {% csrf_token%}
+                    {% bootstrap_form form %}
+                    <div class="form-group text-center">
+                        <input type="submit" class="m-4 btn btn-primary login-btn" value="UPDATE PROFILE">
+                    </div>
+                    <input type="hidden" name="next" value="{{next}}">
+                </form>
+            </div>
+        </div>        
+    </div>
+</div>
+{% endblock %}

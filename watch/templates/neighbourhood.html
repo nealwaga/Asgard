@@ -1,0 +1,113 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static%}
+{% block content%}
+<div class="container p-5 welcome-container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <img class="img-responsive my-pic" src="{{hood.image.url}}" alt="House" />
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 mt-5">
+            <h3>Welcome to {{hood.name}},{{hood.location}}</h3>
+            <p>{{hood.description}}</p>
+            <ul>
+                <li>
+                    <p>{{hood.neighbourhood_post.count}} post{{hood.neighbour_post.count|pluralize}}</p>
+                </li>
+                <li>
+                    <p>{{hood.neighbour.count}} neighbour{{hood.neighbour.count|pluralize}}</p>
+                </li>
+                <li>
+                    <p>{{hood.business.count}} business{{hood.business.count|pluralize}}</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row p-3">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            {% for item in police %}
+            <div class="container text-center">
+                <h3>POLICE AUTHORITY</h3>
+                <p>{{item.name}}</p>
+                <p><i class="fas fa-phone me-2"></i> +254{{item.contact}}</p>
+                <p><i class="far fa-envelope me-2"></i>{{item.email}}</p>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            {% for item in health %}
+            <div class="container text-center">
+                <h3>HEALTH DEPARTMENT</h3>
+                <p>{{item.name}}</p>
+                <p><i class="fas fa-phone me-2"></i> +254{{item.contact}}</p>
+                <p><i class="far fa-envelope me-2"></i>{{item.email}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-3 text-center">
+    <i class="fas fa-chevron-down"></i>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="d-flex justify-content-around">
+            <h3 class="text-center mt-4">NEIGHBOURHOOD POSTS</h3>
+            <a href="{% url 'post' hood_id=hood.id %}"> <button class="btn btn-primary mt-4 hood-btn">Create a Post <i
+                        style="color: #fff" class="far ms-2 fa-newspaper"></i></button></a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {% for post in posts %}
+    <div class="card mb-3">
+        <h5 class="card-header">{{post.title}}</h5>
+            <div class="card-body">
+            <p class="card-text">{{post.info}}</p>
+            <p class="text-muted">Posted {{post.posted_at|timesince}} ago, by {{post.user}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="container">
+    <div class="d-flex justify-content-around">
+        <h3 class="text-center mt-4">BUSINESSES IN THE NEIGHBOURHOOD</h3>
+        <a href="{% url 'createbusiness' id=hood.id %}"> <button class="btn btn-primary mt-4 hood-btn">Create a Business
+                <i style="color: #fff" class="fas ms-2 fa-briefcase"></i></button></a>
+    </div>
+    <form class="form-inline my-2 my-lg-0 d-flex" method="get" action="{% url 'search_results' %}">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2 place" name="business" type="search" placeholder="Search for a Business"
+            aria-label="Search">
+    </form>
+</div>
+<div class="container">
+    <div class="row p-4 mt-4">
+        {% for business in businesses %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="container">
+                <div class="card mb-2" style="width: 18rem;">
+                    {% if business.image %}
+                    <img class="card-img-top" src="{{business.image.url}}" alt="Card image cap">
+                    {% else %}
+                    <p>No Image</p>
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-text">{{business.name}}</h5>
+                        <p><strong>Owner</strong>: {{business.user}}</p>
+                        <p>BUSINESS CONTACTS:</p>
+                        <p><i class="fas fa-phone me-2"></i> +254{{business.phone_number}}</p>
+                        <p><i class="far fa-envelope me-2"></i> {{business.email}}</p>
+                        <p class="ms-auto">Created {{business.posted_at|timesince}} ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <p>{{business.name}}</p>
+    <p>{{business.email}}</p>
+</div>
+{% endblock %}

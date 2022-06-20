@@ -1,0 +1,57 @@
+{%extends 'base.html'%}
+{% load static%}
+{% block content%}
+<div class="container-fluid welcome-container">
+    <div class="container-fluid welcome-section text-center">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <img class="img-responsive my-pic" src="{% static "images/house1.jpg" %}" alt="House" />
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 pt-5">
+                <h3>"And good neighbours make a huge difference in the quality of life"</h3>
+                <p><em>Robert Fulghum</em></p>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center">
+        <a href="#target-home"><i class="fas fa-3x fa-chevron-down"></i></a>
+    </div>
+</div>
+<div class="container mt-5 available-section">
+    <div class="d-flex justify-content-between">
+        <p>The following are the available neighbourhoods:</p>
+        <a href="{%url 'createhood'%}"> <button class="btn btn-primary hood-btn">Create a Neighbourhood <i
+                    style="color: #fff" class="fas fa-home"></i></button></a>
+    </div>
+</div>
+<div class="container" id="target-home">
+    <div class="row">
+        {% for hood in hoods %}
+        <div class="col-lg-6 col-md-6 col-sm-12">
+           <div class="hood-list">
+            <div class="card p-2">
+                {% if hood.image %}
+                <img class="card-img-top" src="{{ hood.image.url }}" alt="Card image cap">
+                {% else %}
+                <p>No Image</p>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-map-marker-alt"></i> {{hood.name}}, {{hood.location}}</h5>
+                    <p class="card-text">{{hood.description}}</p>
+                    <p class="text-muted">{{hood.neighbour.count}} <i class="fas mx-1 fa-users"></i></p>
+                    <div class="d-flex justify-content-around">
+                    {% if request.user.profile.neighbourhood == hood %}
+                    <a href="{% url 'neighbourhood' id=hood.id %}"><p style="color:#8A8635">Visit Neighbourhood</p></a> 
+                    <a href="{% url 'move-neighbourhood' id=hood.id %}"><p style="color: #A3423C">Change Neighbourhood</p></a> 
+                        {% elif not request.user.profile.neighbourhood %}
+                        <a href="{% url 'join-neighbourhood' hood.id %}"><p>Join Neighbourhood</p></a>
+                  {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

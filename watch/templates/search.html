@@ -1,0 +1,51 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static%}
+{% block content%}
+<div class=" container p-5 text-center">
+    {% if results %}
+    <p> We have found {{results|length}} businesses with the search term "{{message}}" in this neighbourhood.</p>
+    {% else %}
+    <p> We have found 0 businesses for the search term "{{message}}" in this neighbourhood.</p>
+    {% endif %}
+</div>
+
+
+{% if results %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            {% for business in results %}
+            <div class="card" style="width: 20rem;margin-top:10px;">
+                <div class="card-body text-center">
+                    <p class="card-title" data-toggle="modal" data-target="#{{business.id}}">
+                        {{business}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="modal fade" id="{{business.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header text-center">
+                    <h3 class="text-center">{{business.name}}</h3>
+                </div>
+                <div class="modal-body">
+                    <img class="card-img-top" src="{{business.image.url}}" height=200 width=100>
+                    <p><span style="font-weight:bold;">Owner:</span> {{business.user}}</p>
+                </div>
+                <div class="modal-footer" style="display:block;">
+                    <h4 class="text-center">Business Contacts:</h4>
+                    <p><span class="bold">Phone Number:</span> +254{{business.phone_number}}</p>
+                    <p><span class="bold">Email:</span> {{business.email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

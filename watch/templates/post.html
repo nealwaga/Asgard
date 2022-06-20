@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load static%}
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="text-center mt-5">
+                <h1>KEEP YOUR NEIGHBOURHOOD <br> IN THE KNOW!</h1>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12">
+            <div class="prof-body mt-5">
+                <form action="{% url 'post' hood_id=hood.id %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token%}
+                    {% bootstrap_form form %}
+                    <div class="form-group text-center">
+                        <input type="submit" class="m-4 btn btn-primary new-btn" value="Create Post">
+                    </div>
+                    <input type="hidden" name="next" value="{{next}}">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%  endblock %}
