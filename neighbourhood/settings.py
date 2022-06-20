@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'bootstrap3',
     'tinymce',
+    'registration',
+    'rest_framework',
 ]
 
 #Cloudinary Classes

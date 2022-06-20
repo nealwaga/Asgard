@@ -3,7 +3,7 @@ beautifulsoup4==4.11.1
 certifi==2022.6.15
 cloudinary==1.29.0
 confusable-homoglyphs==3.2.0
-Django==3.2
+Django==4.0.4
 django-bootstrap3==21.2
 django-bootstrap4==22.1
 django-registration==3.3
