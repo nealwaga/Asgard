@@ -119,13 +119,13 @@ class Post(models.Model):
     def __str__(self):
         return self.title
          
-    # @classmethod
-    # def get_post(cls, id):
-    #     """
-    #     A method that gets a post using the given id
-    #     """   
-    #     post = Post.objects.filter(id=neighbourhood_id)
-    #     return post     
+    @classmethod
+    def get_post(cls, id):
+        """
+        A method that gets a post using the given id
+        """   
+        post = Post.objects.filter(id=neighbourhood_id)
+        return post     
     
     
     
