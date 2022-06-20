@@ -146,6 +146,13 @@ USE_L10N = True
 USE_TZ = True
 
 
+#Email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+# LOGIN_URL = 'sign-in'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
